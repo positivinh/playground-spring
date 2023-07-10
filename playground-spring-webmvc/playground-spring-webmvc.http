@@ -1,0 +1,3 @@
+### GET /playgrounds
+
+GET {{baseUrl}}/playgrounds?searchTerm=💩
