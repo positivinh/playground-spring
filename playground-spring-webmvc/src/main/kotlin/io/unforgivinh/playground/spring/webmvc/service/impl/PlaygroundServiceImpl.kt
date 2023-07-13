@@ -34,6 +34,7 @@ class PlaygroundServiceImpl(
     override fun listPlaygrounds(searchTerm: String?, pageable: Pageable?): Page<Playground> {
 
         val ret: List<Playground> = playgroundInMemoryRepository.findAll().toList()
+            .filter { playground -> searchTerm?.let { playground.name?.contains(it) } ?: true }
 
         return PageImpl(ret, pageable!!, ret.size.toLong())
     }

@@ -3,13 +3,13 @@ package io.unforgivinh.playground.spring.webmvc.controller
 import com.crabshue.commons.kotlin.logging.getLogger
 import io.unforgivinh.playground.spring.webmvc.controllers.PlaygroundApi
 import io.unforgivinh.playground.spring.webmvc.dtos.PagePlayground
-import io.unforgivinh.playground.spring.webmvc.dtos.Playground
+import io.unforgivinh.playground.spring.webmvc.facade.PlaygroundFacade
 import org.springframework.data.domain.Pageable
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class PlaygroundController : PlaygroundApi {
+class PlaygroundController(var playgroundFacade: PlaygroundFacade) : PlaygroundApi {
 
     private val logger = getLogger()
 
@@ -17,12 +17,7 @@ class PlaygroundController : PlaygroundApi {
 
         logger.info("Received request [GET /playgrounds] with parameters [searchTerm=$searchTerm] and [pageable=$pageable]")
 
-        val ret = PagePlayground(
-            listOf(
-                Playground().name("playground-spring"),
-                Playground().name("test")
-            )
-        )
+        val ret: PagePlayground = playgroundFacade.getPlaygrounds(searchTerm, pageable)
         return ResponseEntity.ok(ret)
     }
 
