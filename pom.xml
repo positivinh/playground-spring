@@ -14,7 +14,9 @@
     <packaging>pom</packaging>
     <name>playground-spring</name>
     <description>Demo project for Spring Boot</description>
+
     <modules>
+        <module>playground-spring-commons</module>
         <module>playground-spring-webmvc</module>
     </modules>
 
@@ -28,6 +30,7 @@
         <spring-cloud.version>2022.0.3</spring-cloud.version>
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <crabshue-commons.version>0.13.0</crabshue-commons.version>
     </properties>
 
     <dependencyManagement>
@@ -85,6 +88,21 @@
                 <artifactId>mapstruct-processor</artifactId>
                 <version>${mapstruct.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.crabs-hue.commons</groupId>
+                <artifactId>commons-kotlin</artifactId>
+                <version>${crabshue-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.crabs-hue.commons</groupId>
+                <artifactId>commons-exceptions</artifactId>
+                <version>${crabshue-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.crabs-hue.commons</groupId>
+                <artifactId>commons-validations</artifactId>
+                <version>${crabshue-commons.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

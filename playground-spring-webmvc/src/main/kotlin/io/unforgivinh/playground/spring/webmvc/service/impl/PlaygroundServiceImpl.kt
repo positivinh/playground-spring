@@ -4,6 +4,7 @@ import com.crabshue.commons.kotlin.logging.getLogger
 import io.unforgivinh.playground.spring.webmvc.dtos.Playground
 import io.unforgivinh.playground.spring.webmvc.repository.PlaygroundInMemoryRepository
 import io.unforgivinh.playground.spring.webmvc.service.PlaygroundService
+import io.unforgivinh.playground.spring.webmvc.validator.PlaygroundValidator
 import jakarta.annotation.PostConstruct
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageImpl
@@ -12,7 +13,8 @@ import org.springframework.stereotype.Service
 
 @Service
 class PlaygroundServiceImpl(
-    private val playgroundInMemoryRepository: PlaygroundInMemoryRepository
+    private val playgroundInMemoryRepository: PlaygroundInMemoryRepository,
+    private val playgroundValidator: PlaygroundValidator
 ) : PlaygroundService {
 
     private val logger = getLogger()
@@ -42,6 +44,8 @@ class PlaygroundServiceImpl(
     override fun createPlayground(playground: Playground): Playground {
 
         logger.debug("Creating playground [$playground]")
+
+        playgroundValidator.validate(playground)
 
         playgroundInMemoryRepository.save(playground)
 

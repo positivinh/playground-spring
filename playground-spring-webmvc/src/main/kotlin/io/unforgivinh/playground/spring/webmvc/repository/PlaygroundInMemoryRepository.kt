@@ -63,4 +63,11 @@ class PlaygroundInMemoryRepository : InMemoryRepository<Playground, String>, Cru
         TODO("Not yet implemented")
     }
 
+    fun findByName(name: String): Optional<Playground> {
+
+        return this.inMemoryPlaygrounds.stream()
+            .filter { it.name == name }
+            .findAny()
+    }
+
 }
