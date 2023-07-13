@@ -20,12 +20,30 @@ paths:
             type: string
             default: ''
       responses:
-        "200":
+        200:
           description: default response
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/PagePlayground'
+    post:
+      tags:
+        - playground
+      operationId: createPlayground
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Playground'
+      responses:
+        201:
+          description: Created. Returns the created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playground'
+
+
 
 components:
   schemas:

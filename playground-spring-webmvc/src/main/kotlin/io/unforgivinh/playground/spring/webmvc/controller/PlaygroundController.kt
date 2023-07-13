@@ -3,8 +3,10 @@ package io.unforgivinh.playground.spring.webmvc.controller
 import com.crabshue.commons.kotlin.logging.getLogger
 import io.unforgivinh.playground.spring.webmvc.controllers.PlaygroundApi
 import io.unforgivinh.playground.spring.webmvc.dtos.PagePlayground
+import io.unforgivinh.playground.spring.webmvc.dtos.Playground
 import io.unforgivinh.playground.spring.webmvc.facade.PlaygroundFacade
 import org.springframework.data.domain.Pageable
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
 
@@ -21,4 +23,10 @@ class PlaygroundController(var playgroundFacade: PlaygroundFacade) : PlaygroundA
         return ResponseEntity.ok(ret)
     }
 
+    override fun createPlayground(playground: Playground): ResponseEntity<Playground> {
+
+        val ret: Playground = playgroundFacade.createPlayground(playground)
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(ret)
+    }
 }

@@ -1,3 +1,4 @@
+
 ### GET /playgrounds - no search term
 
 GET {{baseUrl}}/playgrounds
@@ -29,5 +30,21 @@ GET {{baseUrl}}/playgrounds?searchTerm=💩
     client.test("Request executed successfully", function () {
         client.assert(response.status === 200, "Response status is not 200");
         client.assert(response.body.content.length === 0, "Response is not empty")
+    });
+%}
+
+### POST /playgrounds
+
+POST {{baseUrl}}/playgrounds
+Content-Type: application/json
+
+{
+    "name":"😍"
+}
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 201, "Response status is not 201");
+        client.assert(response.body.name, "😍")
     });
 %}

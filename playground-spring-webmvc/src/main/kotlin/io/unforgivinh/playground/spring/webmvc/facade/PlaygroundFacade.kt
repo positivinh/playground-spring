@@ -1,6 +1,7 @@
 package io.unforgivinh.playground.spring.webmvc.facade
 
 import io.unforgivinh.playground.spring.webmvc.dtos.PagePlayground
+import io.unforgivinh.playground.spring.webmvc.dtos.Playground
 import io.unforgivinh.playground.spring.webmvc.mapper.PlaygroundMapper
 import io.unforgivinh.playground.spring.webmvc.service.PlaygroundService
 import org.mapstruct.factory.Mappers
@@ -16,5 +17,10 @@ class PlaygroundFacade(private val playgroundService: PlaygroundService) {
 
         val ret = playgroundService.listPlaygrounds(searchTerm, pageable)
         return playgroundMapper.mapPageable(ret)
+    }
+
+    fun createPlayground(playground: Playground): Playground {
+
+        return playgroundService.createPlayground(playground)
     }
 }
