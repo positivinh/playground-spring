@@ -6,11 +6,11 @@ servers:
   - url: /
 paths:
 
-  /playgrounds:
+  /resources:
     get:
       tags:
-        - playground
-      operationId: getPlaygrounds
+        - resource
+      operationId: getResources
       x-spring-paginated: true
       parameters:
         - name: searchTerm
@@ -25,36 +25,36 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PagePlayground'
+                $ref: '#/components/schemas/PageResource'
     post:
       tags:
-        - playground
-      operationId: createPlayground
+        - resource
+      operationId: createResource
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Playground'
+              $ref: '#/components/schemas/Resource'
       responses:
         201:
           description: Created. Returns the created entity
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Playground'
+                $ref: '#/components/schemas/Resource'
 
 
 
 components:
   schemas:
 
-    Playground:
+    Resource:
       type: object
       properties:
         name:
           type: string
 
-    PagePlayground:
+    PageResource:
       required:
         - content
       type: object
@@ -64,7 +64,7 @@ components:
         content:
           type: array
           items:
-            $ref: '#/components/schemas/Playground'
+            $ref: '#/components/schemas/Resource'
 
     Pageable:
       type: object

@@ -1,15 +1,15 @@
 package io.unforgivinh.playground.spring.webmvc.validator.impl
 
 import io.unforgivinh.playgound.spring.commons.validation.SimpleValidator
-import io.unforgivinh.playground.spring.webmvc.dtos.Playground
-import io.unforgivinh.playground.spring.webmvc.repository.PlaygroundInMemoryRepository
+import io.unforgivinh.playground.spring.webmvc.dtos.Resource
+import io.unforgivinh.playground.spring.webmvc.repository.ResourceInMemoryRepository
 import org.springframework.stereotype.Component
 import org.springframework.validation.Errors
 
 @Component
-class PlaygroundUniquenessValidator(private val playgroundRepository: PlaygroundInMemoryRepository) : SimpleValidator<Playground> {
+class ResourceUniquenessValidator(private val playgroundRepository: ResourceInMemoryRepository) : SimpleValidator<Resource> {
 
-    override fun validate(entity: Playground, errors: Errors) {
+    override fun validate(entity: Resource, errors: Errors) {
 
         playgroundRepository.findByName(entity.name)
             .ifPresent { errors.reject("Playground already exists") }

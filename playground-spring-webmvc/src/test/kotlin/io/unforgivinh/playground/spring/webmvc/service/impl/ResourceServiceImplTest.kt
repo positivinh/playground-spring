@@ -1,8 +1,8 @@
 package io.unforgivinh.playground.spring.webmvc.service.impl
 
-import io.unforgivinh.playground.spring.webmvc.PlaygroundFixtureFactory
-import io.unforgivinh.playground.spring.webmvc.repository.PlaygroundInMemoryRepository
-import io.unforgivinh.playground.spring.webmvc.validator.PlaygroundValidator
+import io.unforgivinh.playground.spring.webmvc.ResourceFixtureFactory
+import io.unforgivinh.playground.spring.webmvc.repository.ResourceInMemoryRepository
+import io.unforgivinh.playground.spring.webmvc.validator.ResourceValidator
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -13,22 +13,22 @@ import org.mockito.Spy
 import org.mockito.junit.jupiter.MockitoExtension
 
 @ExtendWith(MockitoExtension::class)
-class PlaygroundServiceImplTest {
+class ResourceServiceImplTest {
 
     @Spy
-    private lateinit var playgroundInMemoryRepository: PlaygroundInMemoryRepository
+    private lateinit var resourceInMemoryRepository: ResourceInMemoryRepository
 
     @Mock
-    private lateinit var playgroundValidator: PlaygroundValidator
+    private lateinit var resourceValidator: ResourceValidator
 
     @InjectMocks
-    private lateinit var playgroundService: PlaygroundServiceImpl
+    private lateinit var playgroundService: ResourceServiceImpl
 
 
     @Test
     fun listPlaygrounds() {
 
-        val res = playgroundService.listPlaygrounds()
+        val res = playgroundService.listResources()
 
         Assertions.assertFalse(res.isEmpty)
         Assertions.assertEquals(1, res.content.size)
@@ -37,15 +37,15 @@ class PlaygroundServiceImplTest {
     @Test
     fun createPlayground() {
 
-        val inMemoryListBeforeCreation = playgroundService.listPlaygrounds()
+        val inMemoryListBeforeCreation = playgroundService.listResources()
 
-        val playground = PlaygroundFixtureFactory.defaultFixture()
+        val playground = ResourceFixtureFactory.defaultFixture()
 
-        val res = playgroundService.createPlayground(playground)
+        val res = playgroundService.createResource(playground)
 
         Assertions.assertEquals(playground, res)
 
-        val inMemoryListAfterCreation = playgroundService.listPlaygrounds()
+        val inMemoryListAfterCreation = playgroundService.listResources()
 
         Assertions.assertEquals(inMemoryListBeforeCreation.size + 1, inMemoryListAfterCreation.size)
     }
