@@ -10,7 +10,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class PlaygroundControllerTest {
+class ResourceControllerTest {
 
     @Autowired
     private lateinit var mockMvc: MockMvc

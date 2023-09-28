@@ -1,27 +1,27 @@
 package io.unforgivinh.playground.spring.webmvc.repository
 
-import io.unforgivinh.playground.spring.webmvc.dtos.Playground
+import io.unforgivinh.playground.spring.webmvc.dtos.Resource
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-class PlaygroundInMemoryRepository : InMemoryRepository<Playground, String>, CrudRepository<Playground, String> {
+class ResourceInMemoryRepository : InMemoryRepository<Resource, String>, CrudRepository<Resource, String> {
 
-    private val inMemoryPlaygrounds = mutableListOf<Playground>()
+    private val inMemoryPlaygrounds = mutableListOf<Resource>()
 
-    override fun <S : Playground> save(entity: S): S {
+    override fun <S : Resource> save(entity: S): S {
 
         inMemoryPlaygrounds.add(entity)
 
         return entity
     }
 
-    override fun <S : Playground?> saveAll(entities: MutableIterable<S>): MutableIterable<S> {
+    override fun <S : Resource?> saveAll(entities: MutableIterable<S>): MutableIterable<S> {
         TODO("Not yet implemented")
     }
 
-    override fun findById(id: String): Optional<Playground> {
+    override fun findById(id: String): Optional<Resource> {
         TODO("Not yet implemented")
     }
 
@@ -29,7 +29,7 @@ class PlaygroundInMemoryRepository : InMemoryRepository<Playground, String>, Cru
         TODO("Not yet implemented")
     }
 
-    override fun findAll(): MutableIterable<Playground> {
+    override fun findAll(): MutableIterable<Resource> {
 
         return this.inMemoryPlaygrounds
     }
@@ -43,7 +43,7 @@ class PlaygroundInMemoryRepository : InMemoryRepository<Playground, String>, Cru
         this.inMemoryPlaygrounds.clear()
     }
 
-    override fun deleteAll(entities: MutableIterable<Playground>) {
+    override fun deleteAll(entities: MutableIterable<Resource>) {
         TODO("Not yet implemented")
     }
 
@@ -51,7 +51,7 @@ class PlaygroundInMemoryRepository : InMemoryRepository<Playground, String>, Cru
         TODO("Not yet implemented")
     }
 
-    override fun delete(entity: Playground) {
+    override fun delete(entity: Resource) {
         TODO("Not yet implemented")
     }
 
@@ -59,11 +59,11 @@ class PlaygroundInMemoryRepository : InMemoryRepository<Playground, String>, Cru
         TODO("Not yet implemented")
     }
 
-    override fun findAllById(ids: MutableIterable<String>): MutableIterable<Playground> {
+    override fun findAllById(ids: MutableIterable<String>): MutableIterable<Resource> {
         TODO("Not yet implemented")
     }
 
-    fun findByName(name: String): Optional<Playground> {
+    fun findByName(name: String): Optional<Resource> {
 
         return this.inMemoryPlaygrounds.stream()
             .filter { it.name == name }
