@@ -1,7 +1,7 @@
 
-### GET /playgrounds - no search term
+### GET /resources - no search term
 
-GET {{baseUrl}}/playgrounds
+GET {{baseUrl}}/resources
 
 > {%
     client.test("Request executed successfully", function () {
@@ -10,9 +10,9 @@ GET {{baseUrl}}/playgrounds
 %}
 
 
-### GET /playgrounds - matching search term
+### GET /resources - matching search term
 
-GET {{baseUrl}}/playgrounds?searchTerm=Default%20play
+GET {{baseUrl}}/resources?searchTerm=Default%20play
 
 
 > {%
@@ -22,9 +22,9 @@ GET {{baseUrl}}/playgrounds?searchTerm=Default%20play
     });
 %}
 
-### GET /playgrounds - non-matching search tem
+### GET /resources - non-matching search tem
 
-GET {{baseUrl}}/playgrounds?searchTerm=💩
+GET {{baseUrl}}/resources?searchTerm=💩
 
 > {%
     client.test("Request executed successfully", function () {
@@ -33,9 +33,9 @@ GET {{baseUrl}}/playgrounds?searchTerm=💩
     });
 %}
 
-### POST /playgrounds
+### POST /resources
 
-POST {{baseUrl}}/playgrounds
+POST {{baseUrl}}/resources
 Content-Type: application/json
 
 {
