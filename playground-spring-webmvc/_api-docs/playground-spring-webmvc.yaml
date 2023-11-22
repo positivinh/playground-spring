@@ -1,0 +1,126 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: /
+paths:
+
+  /resources:
+    get:
+      tags:
+        - resource
+      operationId: getResources
+      x-spring-paginated: true
+      parameters:
+        - name: searchTerm
+          in: query
+          required: false
+          schema:
+            type: string
+            default: ''
+      responses:
+        200:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageResource'
+    post:
+      tags:
+        - resource
+      operationId: createResource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        201:
+          description: Created. Returns the created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+
+
+
+components:
+  schemas:
+
+    Resource:
+      type: object
+      properties:
+        name:
+          type: string
+
+    PageResource:
+      required:
+        - content
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/Page'
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+
+    Pageable:
+      type: object
+      properties:
+        page:
+          minimum: 0
+          type: integer
+          format: int32
+        size:
+          maximum: 2000
+          minimum: 1
+          type: integer
+          format: int32
+        sort:
+          type: array
+          items:
+            type: string
+
+
+    Page:
+      type: object
+      properties:
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int32
+        numberOfElements:
+          type: integer
+          format: int32
+        pageable:
+          $ref: '#/components/schemas/Pageable'
+        first:
+          type: boolean
+        last:
+          type: boolean
+        number:
+          type: integer
+          format: int32
+        sort:
+          $ref: '#/components/schemas/Sort'
+        size:
+          type: integer
+          format: int32
+        empty:
+          type: boolean
+
+    Sort:
+      type: object
+      properties:
+        sorted:
+          type: boolean
+        unsorted:
+          type: boolean
+        empty:
+          type: boolean
+
+

@@ -1,0 +1,50 @@
+
+### GET /resources - no search term
+
+GET {{baseUrl}}/resources
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+
+### GET /resources - matching search term
+
+GET {{baseUrl}}/resources?searchTerm=Default%20play
+
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.body.content.length === 1, "Response does not contain expected element")
+    });
+%}
+
+### GET /resources - non-matching search tem
+
+GET {{baseUrl}}/resources?searchTerm=💩
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.body.content.length === 0, "Response is not empty")
+    });
+%}
+
+### POST /resources
+
+POST {{baseUrl}}/resources
+Content-Type: application/json
+
+{
+    "name":"😍"
+}
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 201, "Response status is not 201");
+        client.assert(response.body.name, "😍")
+    });
+%}
