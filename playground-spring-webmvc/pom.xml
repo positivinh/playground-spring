@@ -113,16 +113,22 @@
                             <library>spring-boot</library>
                             <generateModels>true</generateModels>
                             <generateApiDocumentation>false</generateApiDocumentation>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
                             <configOptions>
+                                <generateApiTests>false</generateApiTests>
                                 <useTags>true</useTags>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
-                                <interfaceOnly>true</interfaceOnly>
+                                <interfaceOnly>false</interfaceOnly>
                                 <dateLibrary>java8</dateLibrary>
                                 <performBeanValidation>true</performBeanValidation>
                                 <useBeanValidation>true</useBeanValidation>
                                 <annotationLibrary>swagger2</annotationLibrary>
                                 <useJakartaEe>true</useJakartaEe>
                                 <useSpringBoot3>true</useSpringBoot3>
+                                <useSpringController>true</useSpringController>
+                                <delegatePattern>true</delegatePattern>
+                                <useResponseEntity>false</useResponseEntity>
                             </configOptions>
                         </configuration>
                     </execution>
