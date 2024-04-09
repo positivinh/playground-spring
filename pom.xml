@@ -18,6 +18,7 @@
     <modules>
         <module>playground-spring-commons</module>
         <module>playground-spring-webmvc</module>
+        <module>playground-spring-mybatis</module>
     </modules>
 
     <properties>
