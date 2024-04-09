@@ -14,8 +14,8 @@
 
     <properties>
         <openapi.codegen.version>6.6.0</openapi.codegen.version>
-        <springdoc-openapi.version>2.1.0</springdoc-openapi.version>
-        <swagger-v3.version>2.2.11</swagger-v3.version>
+        <springdoc-openapi.version>2.5.0</springdoc-openapi.version>
+        <swagger-v3.version>2.2.21</swagger-v3.version>
     </properties>
 
     <dependencies>
