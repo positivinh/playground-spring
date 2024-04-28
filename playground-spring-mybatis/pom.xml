@@ -9,21 +9,11 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>playground-spring-commons</artifactId>
+    <artifactId>playground-spring-mybatis</artifactId>
+
 
     <dependencies>
-        <dependency>
-            <groupId>com.github.crabs-hue.commons</groupId>
-            <artifactId>commons-kotlin</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.crabs-hue.commons</groupId>
-            <artifactId>commons-exceptions</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.crabs-hue.commons</groupId>
-            <artifactId>commons-validations</artifactId>
-        </dependency>
+
     </dependencies>
 
     <build>
@@ -33,16 +23,8 @@
                 <artifactId>kotlin-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

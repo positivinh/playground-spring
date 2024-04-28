@@ -5,19 +5,20 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.2</version>
+        <version>3.2.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>io.unforgivinh.playground.spring</groupId>
+    <groupId>io.positivinh.playground.spring</groupId>
     <artifactId>playground-spring</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>playground-spring</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Spring Boot concepts and snippets for _positivinh_</description>
 
     <modules>
         <module>playground-spring-commons</module>
         <module>playground-spring-webmvc</module>
+        <module>playground-spring-mybatis</module>
     </modules>
 
     <properties>
@@ -25,18 +26,20 @@
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <kotlin.version>2.0.0-Beta4</kotlin.version>
-        <spring-boot.version>3.2.2</spring-boot.version>
+        <kotlin.version>2.0.0-RC1</kotlin.version>
+        <spring-boot.version>3.2.4</spring-boot.version>
         <spring-cloud.version>2023.0.0</spring-cloud.version>
-        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
-        <crabshue-commons.version>1.0.0</crabshue-commons.version>
-        <jackson-bom.version>2.16.1</jackson-bom.version>
+        <crabshue-commons.version>1.1.0</crabshue-commons.version>
+        <jackson-bom.version>2.17.0</jackson-bom.version>
         <junit-jupiter.version>5.10.1</junit-jupiter.version>
         <mockito.version>5.7.0</mockito.version>
         <logback.version>1.4.14</logback.version>
         <json-path.version>2.9.0</json-path.version>
         <feign.version>13.2</feign.version>
+        <lombok.version>1.18.32</lombok.version>
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
+        <logback.version>1.5.4</logback.version>
     </properties>
 
     <dependencyManagement>
@@ -158,6 +161,10 @@
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
             <version>1.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
         </dependency>
     </dependencies>
 
