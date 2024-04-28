@@ -68,8 +68,8 @@
             <configuration>
                 <inputSpec>${project.basedir}/_api-docs/${project.artifactId}.yaml</inputSpec>
                 <output>${project.basedir}/target/generated-sources</output>
-                <apiPackage>io.unforgivinh.playground.spring.webmvc.controllers</apiPackage>
-                <modelPackage>io.unforgivinh.playground.spring.webmvc.dtos</modelPackage>
+                <apiPackage>io.positivinh.playground.spring.webmvc.controllers</apiPackage>
+                <modelPackage>io.positivinh.playground.spring.webmvc.dtos</modelPackage>
                 <generatorName>spring</generatorName>
                 <library>spring-boot</library>
                 <generateModels>true</generateModels>

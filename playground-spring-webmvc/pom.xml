@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>io.unforgivinh.playground.spring</groupId>
+        <groupId>io.positivinh.playground.spring</groupId>
         <artifactId>playground-spring</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
@@ -74,7 +74,7 @@
             <artifactId>mapstruct-processor</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.unforgivinh.playground.spring</groupId>
+            <groupId>io.positivinh.playground.spring</groupId>
             <artifactId>playground-spring-commons</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
@@ -115,8 +115,8 @@
                         <configuration>
                             <inputSpec>${project.basedir}/_api-docs/${project.artifactId}.yaml</inputSpec>
                             <output>${project.basedir}/target/generated-sources</output>
-                            <apiPackage>io.unforgivinh.playground.spring.webmvc.controllers</apiPackage>
-                            <modelPackage>io.unforgivinh.playground.spring.webmvc.dtos</modelPackage>
+                            <apiPackage>io.positivinh.playground.spring.webmvc.controllers</apiPackage>
+                            <modelPackage>io.positivinh.playground.spring.webmvc.dtos</modelPackage>
                             <generatorName>spring</generatorName>
                             <library>spring-boot</library>
                             <generateModels>true</generateModels>
