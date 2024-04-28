@@ -13,7 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>playground-spring</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Spring Boot concepts and snippets for _positivinh_</description>
 
     <modules>
         <module>playground-spring-commons</module>
