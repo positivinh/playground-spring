@@ -1,23 +1,29 @@
 package io.positivinh.playground.spring.mybatis.test
 
+import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection
-import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Bean
 import org.testcontainers.containers.OracleContainer
-import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.junit.jupiter.Testcontainers
 
-@Configuration
+
+/**
+ * Configuration for mutualized Oracle testcontainers. Slight deviation on reference documentation, as we do not use the annotation [org.testcontainers.containers.Container]
+ *
+ * see [Testcontainers documentation](https://testcontainers.com/guides/testing-spring-boot-rest-api-using-testcontainers/)
+ */
+@TestConfiguration
 @Testcontainers
 class OracleTestcontainersConfiguration {
 
-    companion object {
+    @Bean
+    @ServiceConnection
+    fun oracleContainer(): OracleContainer {
 
-        @Container
-        @ServiceConnection
-        private var oracleContainer: OracleContainer = OracleContainer("gvenzl/oracle-xe:21-slim-faststart")
+        return OracleContainer("gvenzl/oracle-xe:21-slim-faststart")
             .withDatabaseName("testDB")
-            .withUsername("testUser")
+            .withUsername("schema_user")
             .withPassword("testPassword")
+            .withInitScript("init-db.sql")
     }
-
 }
