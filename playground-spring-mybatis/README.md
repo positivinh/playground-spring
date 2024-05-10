@@ -1,7 +1,16 @@
 # playground-spring-mybatis
 
+This project covers the following topics:
+
 - [ ] MyBatis Spring integration
+  - [ ] CRUD on entity
+  - [ ] one-to-many relationship
+  - [ ] many-to-one relationship
+  - [ ] many-to-many relationship
+
 - [ ] Usage of Testcontainers for testing purposes
+
+- [ ] Spring Boot docker-compose support
 
 ## spring-mybatis
 
