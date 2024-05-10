@@ -162,3 +162,19 @@ class ResourceEntityMapperTest {
     }
 }
 ```
+
+## Docker compose support
+
+[Spring blog](https://spring.io/blog/2023/06/21/docker-compose-support-in-spring-boot-3-1)
+[Baeldung](https://www.baeldung.com/docker-compose-support-spring-boot)
+
+### Dependencies
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-docker-compose</artifactId>
+    </dependency>
+</dependencies>
+```

@@ -11,6 +11,8 @@ import org.testcontainers.junit.jupiter.Testcontainers
  * Configuration for mutualized Oracle testcontainers. Slight deviation on reference documentation, as we do not use the annotation [org.testcontainers.containers.Container]
  *
  * see [Testcontainers documentation](https://testcontainers.com/guides/testing-spring-boot-rest-api-using-testcontainers/)
+ *
+ * details on the [image used](https://hub.docker.com/r/gvenzl/oracle-xe)
  */
 @TestConfiguration
 @Testcontainers
