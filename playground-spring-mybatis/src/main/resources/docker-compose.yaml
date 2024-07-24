@@ -1,0 +1,11 @@
+services:
+  database:
+    # https://hub.docker.com/r/gvenzl/oracle-xe
+    image: 'gvenzl/oracle-xe:21-slim-faststart'
+    ports:
+      - 1521:1521
+    environment:
+      - ORACLE_RANDOM_PASSWORD=true
+      - ORACLE_DATABASE=oracle-container
+      - APP_USER=schema_user
+      - APP_USER_PASSWORD=password
