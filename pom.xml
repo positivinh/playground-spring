@@ -19,6 +19,7 @@
         <module>playground-spring-commons</module>
         <module>playground-spring-webmvc</module>
         <module>playground-spring-mybatis</module>
+        <module>playground-spring-data-jpa</module>
     </modules>
 
     <properties>

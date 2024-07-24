@@ -1,0 +1,13 @@
+spring:
+  docker:
+    compose:
+      enabled: true
+      skip:
+        in-tests: false
+      file: docker-compose.yaml
+  datasource:
+    url: jdbc:postgres://localhost:5432/PLAYGROUND
+    username: playground-user
+    password: password
+  liquibase:
+    enabled: false
