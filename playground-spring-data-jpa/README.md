@@ -105,3 +105,7 @@ class PlaygroundEntity {
 
 }
 ```
+
+### Relationships
+
+

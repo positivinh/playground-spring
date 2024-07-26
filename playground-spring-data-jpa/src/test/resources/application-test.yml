@@ -5,6 +5,8 @@ spring:
         in-tests: false
       stop:
         command: down
+  datasource:
+    url: jdbc:postgres://postgres:5432/PLAYGROUND
   test:
     database:
       replace: none
