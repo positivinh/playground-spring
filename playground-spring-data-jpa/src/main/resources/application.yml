@@ -3,11 +3,17 @@ spring:
     compose:
       enabled: true
       skip:
-        in-tests: false
+        in-tests: true
       file: docker-compose.yaml
+      stop:
+        command: stop
   datasource:
     url: jdbc:postgres://localhost:5432/PLAYGROUND
     username: playground-user
     password: password
+    driver-class-name: org.postgresql.Driver
   liquibase:
-    enabled: false
+    enabled: true
+    contexts: dev,prod
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+

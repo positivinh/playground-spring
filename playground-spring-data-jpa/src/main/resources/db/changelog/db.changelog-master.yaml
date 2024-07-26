@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: ./scripts/db.init-ddl.xml
+      relativeToChangelogFile: true

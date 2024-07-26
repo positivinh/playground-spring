@@ -1,0 +1,10 @@
+spring:
+  docker:
+    compose:
+      skip:
+        in-tests: false
+      stop:
+        command: down
+  test:
+    database:
+      replace: none
