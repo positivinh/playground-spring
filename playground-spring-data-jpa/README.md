@@ -4,7 +4,7 @@
 mvn clean verify -f ../pom.xml -am -pl playground-spring-data-jpa
 ```
 
-Docker engine must be running.
+Docker Engine must be running.
 
 ## Technologies
 
@@ -17,6 +17,8 @@ Docker engine must be running.
   and [Spring Boot integration](https://contribute.liquibase.com/extensions-integrations/directory/integration-docs/springboot/)
 
 ## Docker compose support
+
+[Reference documentation](https://docs.spring.io/spring-boot/reference/features/dev-services.html#features.dev-services.docker-compose)
 
 ### Maven dependency
 
@@ -58,6 +60,9 @@ services:
 
 ## Liquibase
 
+[Reference documentation](https://docs.liquibase.com/start/get-started/liquibase-sql.html)
+and [Spring Boot integration](https://contribute.liquibase.com/extensions-integrations/directory/integration-docs/springboot/)
+
 ### Maven dependency
 
 ```xml
@@ -79,6 +84,37 @@ spring:
 ```
 
 ## Testcontainers
+
+[Reference documentation](https://testcontainers.com/guides/testing-spring-boot-rest-api-using-testcontainers/)
+and [Spring Boot integration](https://docs.spring.io/spring-boot/reference/testing/testcontainers.html)
+
+### Maven dependencies
+
+```xml
+
+<dependencies>
+    <dependency>
+        <groupId>org.testcontainers</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-testcontainers</artifactId>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.testcontainers</groupId>
+        <artifactId>postgresql</artifactId>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+```
 
 ### Configuration
 
@@ -112,6 +148,8 @@ class PlaygroundEntityRepositoryTestcontainersTest {
 ```
 
 ## Spring Data JPA
+
+[Reference documentation](https://spring.io/projects/spring-data-jpa)
 
 ### Configuration
 
@@ -198,6 +236,8 @@ class PlaygroundEntityRecord {
 ```
 
 ## Auditing
+
+[Reference documentation](https://docs.spring.io/spring-data/jpa/reference/auditing.html)
 
 ### Configuration
 
