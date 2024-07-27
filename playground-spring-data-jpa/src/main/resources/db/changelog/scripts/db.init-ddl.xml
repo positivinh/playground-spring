@@ -13,4 +13,17 @@
         </createTable>
         <createSequence sequenceName="PK_PLAYGROUND_ENTITY_SEQ" incrementBy="1" startValue="1"/>
     </changeSet>
+
+    <changeSet id="create-table-playground-entity-records" author="vinh" context="prod">
+        <createTable tableName="PLAYGROUND_ENTITY_RECORDS">
+            <column name="ID" autoIncrement="true" incrementBy="1" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="PK_PLAYGROUND_ENTITY_RECORD" nullable="false"/>
+            </column>
+            <column name="PLAYGROUND_ENTITY_ID" type="bigint">
+                <constraints foreignKeyName="FK_PLAYGROUND_ENTITY_ID" referencedTableName="PLAYGROUND_ENTITY" referencedColumnNames="ID"/>
+            </column>
+            <column name="RECORD_DATA" type="varchar2(255)"/>
+        </createTable>
+        <createSequence sequenceName="PK_PLAYGROUND_ENTITY_RECORD_SEQ" incrementBy="1" startValue="1"/>
+    </changeSet>
 </databaseChangeLog>

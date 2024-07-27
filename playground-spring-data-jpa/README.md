@@ -140,4 +140,50 @@ class PlaygroundEntity {
 
 ### Relationships
 
+#### Unidirectional
 
+#### Bidirectional
+
+```kotlin
+@Entity
+@Table(name = "PLAYGROUND_ENTITY")
+@SequenceGenerator(name = "playgroundEntityPkGenerator", sequenceName = "PK_PLAYGROUND_ENTITY_SEQ", allocationSize = 1)
+class PlaygroundEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "playgroundEntityPkGenerator")
+    var id: Long? = null
+
+    var data: String? = null
+
+    @JoinColumn(name = "PLAYGROUND_ENTITY_ID")
+    @OneToMany(cascade = [CascadeType.ALL])
+    var records: MutableSet<PlaygroundEntityRecord> = HashSet()
+
+    fun addRecord(playgroundEntityRecord: PlaygroundEntityRecord): PlaygroundEntity {
+
+        playgroundEntityRecord.playgroundEntity = this
+        this.records.add(playgroundEntityRecord)
+        return this
+    }
+}
+```
+
+```kotlin
+@Entity
+@Table(name = "PLAYGROUND_ENTITY_RECORD")
+@SequenceGenerator(name = "playgroundEntityRecordPkGenerator", sequenceName = "PK_PLAYGROUND_ENTITY_RECORD_SEQ", allocationSize = 1)
+class PlaygroundEntityRecord {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "playgroundEntityRecordPkGenerator")
+    var id: Long? = null
+
+    @JoinColumn(name = "PLAYGROUND_ENTITY_ID")
+    @ManyToOne
+    var playgroundEntity: PlaygroundEntity? = null
+
+    @Column(name = "RECORD_DATA")
+    var recordData: String? = null
+}
+```

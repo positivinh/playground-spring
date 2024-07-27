@@ -13,6 +13,18 @@ class PlaygroundEntity {
 
     var data: String? = null
 
+    @JoinColumn(name = "PLAYGROUND_ENTITY_ID")
+    @OneToMany(cascade = [CascadeType.ALL])
+    var records: MutableSet<PlaygroundEntityRecord> = HashSet()
+
+    fun addRecord(playgroundEntityRecord: PlaygroundEntityRecord): PlaygroundEntity {
+
+        playgroundEntityRecord.playgroundEntity = this
+        this.records.add(playgroundEntityRecord)
+        return this
+    }
+
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
