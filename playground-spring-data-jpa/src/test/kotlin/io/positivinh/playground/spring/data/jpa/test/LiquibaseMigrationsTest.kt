@@ -1,6 +1,7 @@
-package io.positivinh.playground.spring.data.jpa.repository
+package io.positivinh.playground.spring.data.jpa.test
 
 import io.positivinh.playground.spring.data.jpa.configuration.SpringDataJpaConfiguration
+import io.positivinh.playground.spring.data.jpa.repository.PlaygroundEntityRepository
 import io.positivinh.playground.spring.data.jpa.test.configuration.PostgresTestcontainersTestConfiguration
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -17,7 +18,7 @@ import org.springframework.context.annotation.Import
 @Import(SpringDataJpaConfiguration::class)
 @ImportTestcontainers(value = [PostgresTestcontainersTestConfiguration::class])
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class PlaygroundEntityLiquibaseTest {
+class LiquibaseMigrationsTest {
 
     @Autowired
     private lateinit var playgroundEntityRepository: PlaygroundEntityRepository
