@@ -2,3 +2,6 @@ databaseChangeLog:
   - include:
       file: ./scripts/db.init-ddl.xml
       relativeToChangelogFile: true
+  - include:
+      file: ./data/data.dev-data.xml
+      relativeToChangelogFile: true

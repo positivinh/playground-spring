@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface PlaygroundEntityRepository: JpaRepository<PlaygroundEntity, Long> {
+
+    fun findAllByCreatedBy(createdBy: String): List<PlaygroundEntity>
 }

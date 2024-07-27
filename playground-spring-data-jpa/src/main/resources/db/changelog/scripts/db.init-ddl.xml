@@ -15,7 +15,7 @@
     </changeSet>
 
     <changeSet id="create-table-playground-entity-records" author="vinh" context="prod">
-        <createTable tableName="PLAYGROUND_ENTITY_RECORDS">
+        <createTable tableName="PLAYGROUND_ENTITY_RECORD">
             <column name="ID" autoIncrement="true" incrementBy="1" type="bigint">
                 <constraints primaryKey="true" primaryKeyName="PK_PLAYGROUND_ENTITY_RECORD" nullable="false"/>
             </column>

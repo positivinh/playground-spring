@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <property name="now" value="now()" dbms="postgresql"/>
+
+    <changeSet id="dev-data" author="vinh" context="dev">
+        <insert tableName="PLAYGROUND_ENTITY">
+            <column name="ID" valueSequenceNext="PK_PLAYGROUND_ENTITY_SEQ"/>
+            <column name="DATA" value="some data for liquibase insert"/>
+            <column name="CREATED_BY" value="liquibase"/>
+            <column name="UPDATED_BY" value="liquibase"/>
+            <column name="CREATION_TIME" value="${now}"/>
+            <column name="UPDATE_TIME" value="${now}"/>
+        </insert>
+        <insert tableName="PLAYGROUND_ENTITY_RECORD">
+            <column name="ID" valueSequenceNext="PK_PLAYGROUND_ENTITY_RECORD_SEQ"/>
+            <column name="PLAYGROUND_ENTITY_ID" valueSequenceCurrent="PK_PLAYGROUND_ENTITY_SEQ"/>
+            <column name="RECORD_DATA" value="some record data"/>
+        </insert>
+
+        <insert tableName="PLAYGROUND_ENTITY_RECORD">
+            <column name="ID" valueSequenceNext="PK_PLAYGROUND_ENTITY_RECORD_SEQ"/>
+            <column name="PLAYGROUND_ENTITY_ID" valueSequenceCurrent="PK_PLAYGROUND_ENTITY_SEQ"/>
+            <column name="RECORD_DATA" value="some record data 2"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
