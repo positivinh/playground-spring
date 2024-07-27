@@ -16,11 +16,11 @@ Docker Engine must be running.
 - [Liquibase](https://docs.liquibase.com/start/get-started/liquibase-sql.html)
   and [Spring Boot integration](https://contribute.liquibase.com/extensions-integrations/directory/integration-docs/springboot/)
 
-## Docker compose support
+# Docker compose support
 
 [Reference documentation](https://docs.spring.io/spring-boot/reference/features/dev-services.html#features.dev-services.docker-compose)
 
-### Maven dependency
+## Maven dependency
 
 ```xml
 
@@ -31,7 +31,7 @@ Docker Engine must be running.
 </dependency>
 ```
 
-### Spring Boot configuration
+## Spring Boot configuration
 
 ```yaml
 spring:
@@ -43,7 +43,7 @@ spring:
             file: docker-compose.yaml
 ```
 
-### Docker compose file
+## Docker compose file
 
 ```yaml
 name: playground-spring-data-jpa
@@ -58,12 +58,12 @@ services:
             - POSTGRES_DB=PLAYGROUND
 ```
 
-## Liquibase
+# Liquibase
 
 [Reference documentation](https://docs.liquibase.com/start/get-started/liquibase-sql.html)
 and [Spring Boot integration](https://contribute.liquibase.com/extensions-integrations/directory/integration-docs/springboot/)
 
-### Maven dependency
+## Maven dependency
 
 ```xml
 
@@ -73,7 +73,7 @@ and [Spring Boot integration](https://contribute.liquibase.com/extensions-integr
 </dependency>
 ```
 
-### Spring Boot configuration
+## Spring Boot configuration
 
 ```yaml
 spring:
@@ -83,12 +83,12 @@ spring:
         change-log: classpath:/db/changelog/db.changelog-master.yaml
 ```
 
-## Testcontainers
+# Testcontainers
 
 [Reference documentation](https://testcontainers.com/guides/testing-spring-boot-rest-api-using-testcontainers/)
 and [Spring Boot integration](https://docs.spring.io/spring-boot/reference/testing/testcontainers.html)
 
-### Maven dependencies
+## Maven dependencies
 
 ```xml
 
@@ -116,7 +116,7 @@ and [Spring Boot integration](https://docs.spring.io/spring-boot/reference/testi
 </dependencies>
 ```
 
-### Configuration
+## Configuration
 
 ```kotlin
 @TestConfiguration
@@ -147,11 +147,11 @@ class PlaygroundEntityRepositoryTestcontainersTest {
 }
 ```
 
-## Spring Data JPA
+# Spring Data JPA
 
 [Reference documentation](https://spring.io/projects/spring-data-jpa)
 
-### Configuration
+## Configuration
 
 ```kotlin
 @Configuration
@@ -159,7 +159,7 @@ class PlaygroundEntityRepositoryTestcontainersTest {
 class SpringDataJpaConfiguration
 ```
 
-### Test configuration
+## Test configuration
 
 ```yaml
 spring:
@@ -168,7 +168,7 @@ spring:
             replace: none
 ```
 
-### Entities
+## Entities
 
 ```kotlin
 @Entity
@@ -185,11 +185,11 @@ class PlaygroundEntity {
 }
 ```
 
-### Relationships
+## Relationships
 
-#### Unidirectional
+### Unidirectional
 
-#### Bidirectional
+### Bidirectional
 
 ```kotlin
 @Entity
@@ -235,11 +235,11 @@ class PlaygroundEntityRecord {
 }
 ```
 
-## Auditing
+# Auditing
 
 [Reference documentation](https://docs.spring.io/spring-data/jpa/reference/auditing.html)
 
-### Configuration
+## Configuration
 
 ```kotlin
 @Configuration
@@ -259,7 +259,7 @@ class SpringDataJpaConfiguration {
 }
 ```
 
-### Auditable entity
+## Auditable entity
 
 ```kotlin
 @Entity
