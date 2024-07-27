@@ -70,7 +70,38 @@ spring:
         contexts: dev,prod
         change-log: classpath:/db/changelog/db.changelog-master.yaml
 ```
+## Testcontainers
 
+### Configuration
+
+```kotlin
+@TestConfiguration
+@Testcontainers
+class PostgresTestcontainersTestConfiguration {
+
+    companion object {
+
+        @ServiceConnection
+        @Container
+        val postgresContainer = PostgreSQLContainer("postgres:16-alpine")
+            .withDatabaseName("PLAYGROUND")
+            .withUsername("playground-user")
+            .withPassword("password")
+    }
+}
+```
+
+```kotlin
+@DataJpaTest(showSql = true)
+@ImportTestcontainers(value = [PostgresTestcontainersTestConfiguration::class])
+class PlaygroundEntityRepositoryTestcontainersTest {
+
+    @Autowired
+    private lateinit var playgroundEntityRepository: PlaygroundEntityRepository
+
+    // tests
+}
+```
 ## Spring Data JPA
 
 ### Configuration
@@ -82,6 +113,7 @@ class SpringDataJpaConfiguration
 ```
 
 ### Test configuration
+
 ```yaml
 spring:
     test:
