@@ -26,4 +26,13 @@
         </createTable>
         <createSequence sequenceName="PK_PLAYGROUND_ENTITY_RECORD_SEQ" incrementBy="1" startValue="1"/>
     </changeSet>
+
+    <changeSet id="id-add-auditing-columns" author="vinh" context="prod">
+        <addColumn tableName="PLAYGROUND_ENTITY">
+            <column name="CREATION_TIME" type="datetime"/>
+            <column name="UPDATE_TIME" type="datetime"/>
+            <column name="CREATED_BY" type="varchar2"/>
+            <column name="UPDATED_BY" type="varchar2"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

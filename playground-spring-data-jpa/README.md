@@ -3,6 +3,7 @@
 ## Technologies
 
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
+- [Auditing](https://docs.spring.io/spring-data/jpa/reference/auditing.html)
 - [Testcontainers](https://testcontainers.com/guides/testing-spring-boot-rest-api-using-testcontainers/)
   and [Spring Boot integration](https://docs.spring.io/spring-boot/reference/testing/testcontainers.html)
 - [Spring Boot Docker compose support](https://docs.spring.io/spring-boot/reference/features/dev-services.html#features.dev-services.docker-compose)
@@ -185,5 +186,64 @@ class PlaygroundEntityRecord {
 
     @Column(name = "RECORD_DATA")
     var recordData: String? = null
+}
+```
+
+## Auditing
+
+### Configuration
+
+```kotlin
+@Configuration
+@EnableJpaRepositories(basePackages = ["io.positivinh.playground.spring.data.jpa.repository"])
+@EnableJpaAuditing
+class SpringDataJpaConfiguration {
+
+    @Bean
+    fun auditorProvider(): AuditorAware<String> {
+
+        return object : AuditorAware<String> {
+            override fun getCurrentAuditor(): Optional<String> {
+                return Optional.of("vinh")
+            }
+        }
+    }
+}
+```
+
+### Auditable entity
+
+```kotlin
+@Entity
+@Table(name = "PLAYGROUND_ENTITY")
+@SequenceGenerator(name = "playgroundEntityPkGenerator", sequenceName = "PK_PLAYGROUND_ENTITY_SEQ", allocationSize = 1)
+@EntityListeners(AuditingEntityListener::class) // https://docs.spring.io/spring-data/jpa/reference/auditing.html#jpa.auditing.configuration
+class PlaygroundEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "playgroundEntityPkGenerator")
+    var id: Long? = null
+
+    var data: String? = null
+
+    @JoinColumn(name = "PLAYGROUND_ENTITY_ID")
+    @OneToMany(cascade = [CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH], fetch = FetchType.LAZY)
+    var records: MutableSet<PlaygroundEntityRecord> = HashSet()
+
+    @CreatedDate
+    @Column(name = "CREATION_TIME")
+    var creationTime: LocalDateTime? = null
+
+    @CreatedBy
+    @Column(name= "CREATED_BY")
+    var createdBy: String? = null
+
+    @LastModifiedDate
+    @Column(name = "UPDATE_TIME")
+    var updateTime: LocalDateTime? = null
+
+    @LastModifiedBy
+    @Column(name= "UPDATED_BY")
+    var updatedBy: String? = null
 }
 ```
