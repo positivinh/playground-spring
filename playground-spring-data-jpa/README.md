@@ -1,5 +1,11 @@
 # Playground Spring Data JPA
 
+```bash
+mvn clean verify -f ../pom.xml -am -pl playground-spring-data-jpa
+```
+
+Docker engine must be running.
+
 ## Technologies
 
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
@@ -71,6 +77,7 @@ spring:
         contexts: dev,prod
         change-log: classpath:/db/changelog/db.changelog-master.yaml
 ```
+
 ## Testcontainers
 
 ### Configuration
@@ -103,6 +110,7 @@ class PlaygroundEntityRepositoryTestcontainersTest {
     // tests
 }
 ```
+
 ## Spring Data JPA
 
 ### Configuration
@@ -235,7 +243,7 @@ class PlaygroundEntity {
     var creationTime: LocalDateTime? = null
 
     @CreatedBy
-    @Column(name= "CREATED_BY")
+    @Column(name = "CREATED_BY")
     var createdBy: String? = null
 
     @LastModifiedDate
@@ -243,7 +251,7 @@ class PlaygroundEntity {
     var updateTime: LocalDateTime? = null
 
     @LastModifiedBy
-    @Column(name= "UPDATED_BY")
+    @Column(name = "UPDATED_BY")
     var updatedBy: String? = null
 }
 ```
