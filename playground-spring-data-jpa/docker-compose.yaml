@@ -1,0 +1,10 @@
+name: playground-spring-data-jpa
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=playground-user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=PLAYGROUND
