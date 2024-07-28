@@ -2,6 +2,7 @@
 ### GET /resources - no search term
 
 GET {{baseUrl}}/resources
+Authorization: vinh
 
 > {%
     client.test("Request executed successfully", function () {
@@ -13,7 +14,7 @@ GET {{baseUrl}}/resources
 ### GET /resources - matching search term
 
 GET {{baseUrl}}/resources?searchTerm=Default%20play
-
+Authorization: vinh
 
 > {%
     client.test("Request executed successfully", function () {
@@ -25,6 +26,7 @@ GET {{baseUrl}}/resources?searchTerm=Default%20play
 ### GET /resources - non-matching search tem
 
 GET {{baseUrl}}/resources?searchTerm=💩
+Authorization: vinh
 
 > {%
     client.test("Request executed successfully", function () {
@@ -37,6 +39,7 @@ GET {{baseUrl}}/resources?searchTerm=💩
 
 POST {{baseUrl}}/resources
 Content-Type: application/json
+Authorization: vinh
 
 {
     "name":"😍"

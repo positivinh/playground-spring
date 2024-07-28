@@ -12,6 +12,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
+import org.springframework.security.test.context.support.WithMockUser
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
@@ -27,6 +29,7 @@ class ResourceControllerTest {
     @Autowired
     private lateinit var mockMvc: MockMvc
 
+    @WithMockUser
     @Test
     fun getResources() {
 
@@ -43,6 +46,7 @@ class ResourceControllerTest {
 
     }
 
+    @WithMockUser
     @Test
     fun createResource() {
 
@@ -52,6 +56,7 @@ class ResourceControllerTest {
 
         mockMvc.perform(
             MockMvcRequestBuilders.post("/resources")
+                .with(SecurityMockMvcRequestPostProcessors.csrf()) // https://medium.com/@kjavaman12/how-to-fix-an-error-403-with-mockmvc-and-junit-609f88b37c40
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonSerializer.of(resource).serialize<String>())
         )
