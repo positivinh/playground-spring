@@ -119,14 +119,13 @@ and [Spring Boot integration](https://docs.spring.io/spring-boot/reference/testi
 ## Configuration
 
 ```kotlin
-@TestConfiguration
-@Testcontainers
 class PostgresTestcontainersTestConfiguration {
 
     companion object {
 
         @ServiceConnection
         @Container
+        @JvmStatic
         val postgresContainer = PostgreSQLContainer("postgres:16-alpine")
             .withDatabaseName("PLAYGROUND")
             .withUsername("playground-user")
@@ -136,8 +135,15 @@ class PostgresTestcontainersTestConfiguration {
 ```
 
 ```kotlin
-@DataJpaTest(showSql = true)
+@ActiveProfiles("testcontainers-test")
+@Import(SpringDataJpaConfiguration::class)
 @ImportTestcontainers(value = [PostgresTestcontainersTestConfiguration::class])
+annotation class TestWithPostgresTestcontainers
+```
+
+```kotlin
+@DataJpaTest(showSql = true)
+@TestWithPostgresTestcontainers
 class PlaygroundEntityRepositoryTestcontainersTest {
 
     @Autowired

@@ -1,21 +1,15 @@
 package io.positivinh.playground.spring.data.jpa.repository
 
-import io.positivinh.playground.spring.data.jpa.configuration.SpringDataJpaConfiguration
 import io.positivinh.playground.spring.data.jpa.test.PlaygroundEntityFixtureFactory
-import io.positivinh.playground.spring.data.jpa.test.configuration.PostgresTestcontainersTestConfiguration
+import io.positivinh.playground.spring.data.jpa.test.configuration.TestWithPostgresTestcontainers
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
-import org.springframework.boot.testcontainers.context.ImportTestcontainers
-import org.springframework.context.annotation.Import
 import org.springframework.data.repository.findByIdOrNull
 
 @DataJpaTest(showSql = true)
-@Import(SpringDataJpaConfiguration::class)
-@ImportTestcontainers(value = [PostgresTestcontainersTestConfiguration::class])
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@TestWithPostgresTestcontainers
 class PlaygroundEntityAuditingTest {
 
     @Autowired
