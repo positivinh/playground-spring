@@ -134,8 +134,10 @@
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
+                            <ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>
                             <configOptions>
                                 <generateApiTests>false</generateApiTests>
+                                <generateModelTests>false</generateModelTests>
                                 <useTags>true</useTags>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
                                 <interfaceOnly>false</interfaceOnly>
