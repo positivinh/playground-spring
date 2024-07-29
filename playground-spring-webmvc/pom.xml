@@ -79,6 +79,17 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
+            <groupId>com.github.crabs-hue.commons</groupId>
+            <artifactId>commons-json</artifactId>
+            <version>${crabshue-commons.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito.kotlin</groupId>
+            <artifactId>mockito-kotlin</artifactId>
+            <version>5.4.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
@@ -123,8 +134,10 @@
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
+                            <ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>
                             <configOptions>
                                 <generateApiTests>false</generateApiTests>
+                                <generateModelTests>false</generateModelTests>
                                 <useTags>true</useTags>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
                                 <interfaceOnly>false</interfaceOnly>
