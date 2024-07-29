@@ -54,3 +54,19 @@ class SpringSecurityConfiguration {
     }
 }
 ```
+
+## Authorization
+
+```kotlin
+@Component
+class ResourceFacade(private val resourceService: ResourceService) : ResourceApiDelegate {
+
+    private val resourceMapper = Mappers.getMapper(ResourceMapper::class.java)
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    override fun createResource(resource: Resource): Resource {
+
+        return resourceService.createResource(resource)
+    }
+}
+```

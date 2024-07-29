@@ -51,3 +51,21 @@ Authorization: vinh
         client.assert(response.body.name, "😍")
     });
 %}
+
+### POST /resources - forbidden because of role
+
+POST {{baseUrl}}/resources
+Content-Type: application/json
+Authorization: user
+
+{
+    "name":"💩"
+}
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 403, "Response status is not 403");
+    });
+%}
+
+

@@ -7,6 +7,7 @@ import io.positivinh.playground.spring.webmvc.mapper.ResourceMapper
 import io.positivinh.playground.spring.webmvc.service.ResourceService
 import org.mapstruct.factory.Mappers
 import org.springframework.data.domain.Pageable
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Component
 
 @Component
@@ -14,6 +15,7 @@ class ResourceFacade(private val resourceService: ResourceService) : ResourceApi
 
     private val resourceMapper = Mappers.getMapper(ResourceMapper::class.java)
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     override fun createResource(resource: Resource): Resource {
 
         return resourceService.createResource(resource)

@@ -20,7 +20,10 @@ class AuthorizationTokenFilter : OncePerRequestFilter() {
 
     companion object {
 
-        val authorizedUsernames = listOf("vinh")
+        val authorizedUsernameAndRoles = mapOf(
+            "user" to listOf("ROLE_USER"),
+            "vinh" to listOf("ROLE_USER", "ROLE_ADMIN")
+        )
     }
 
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, filterChain: FilterChain) {
@@ -36,10 +39,14 @@ class AuthorizationTokenFilter : OncePerRequestFilter() {
 
         log.debug("Authorization header value [{}]", authorizedUser)
 
-        if (authorizedUsernames.contains(authorizedUser)) {
+        if (authorizedUsernameAndRoles.containsKey(authorizedUser)) {
 
             SecurityContextHolder.getContext()
-                .authentication = UsernamePasswordAuthenticationToken(authorizedUser, null, listOf(SimpleGrantedAuthority("ROLE_USER")))
+                .authentication = UsernamePasswordAuthenticationToken(
+                authorizedUser,
+                null,
+                authorizedUsernameAndRoles[authorizedUser]?.map { SimpleGrantedAuthority(it) }
+            )
         }
 
         filterChain.doFilter(request, response)

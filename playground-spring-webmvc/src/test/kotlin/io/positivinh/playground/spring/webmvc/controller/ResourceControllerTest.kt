@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
+import org.springframework.security.access.AccessDeniedException
 import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors
 import org.springframework.test.web.servlet.MockMvc
@@ -46,7 +47,7 @@ class ResourceControllerTest {
 
     }
 
-    @WithMockUser
+    @WithMockUser(authorities = ["ROLE_USER", "ROLE_ADMIN"]) // the authorities here do not really matter, as ResourceFacade is secured but is mocked
     @Test
     fun createResource() {
 
@@ -62,5 +63,22 @@ class ResourceControllerTest {
         )
             .andExpect(MockMvcResultMatchers.status().isCreated)
             .andExpect { MockMvcResultMatchers.jsonPath("$.name").value("playground") }
+    }
+
+    @WithMockUser(authorities = ["ROLE_USER"]) // the authorities here do not really matter, as ResourceFacade is secured but is mocked
+    @Test
+    fun createResource_forbidden() {
+
+        val resource = Resource().name("playground")
+
+        Mockito.doThrow(AccessDeniedException("test")).`when`(resourceFacade).createResource(anyOrNull())
+
+        mockMvc.perform(
+            MockMvcRequestBuilders.post("/resources")
+                .with(SecurityMockMvcRequestPostProcessors.csrf()) // https://medium.com/@kjavaman12/how-to-fix-an-error-403-with-mockmvc-and-junit-609f88b37c40
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(JsonSerializer.of(resource).serialize<String>())
+        )
+            .andExpect(MockMvcResultMatchers.status().isForbidden)
     }
 }
