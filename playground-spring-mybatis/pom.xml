@@ -11,10 +11,6 @@
 
     <artifactId>playground-spring-mybatis</artifactId>
 
-    <properties>
-        <testcontainers.version>1.19.7</testcontainers.version>
-    </properties>
-
     <dependencies>
        <!-- spring-mybatis-->
         <dependency>
