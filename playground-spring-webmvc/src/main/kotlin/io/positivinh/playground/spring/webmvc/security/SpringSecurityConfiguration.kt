@@ -32,6 +32,7 @@ class SpringSecurityConfiguration {
         http {
             csrf { disable() }
             authorizeHttpRequests {
+                authorize("/actuator/**", permitAll)
                 authorize(anyRequest, authenticated)
             }
             addFilterBefore<UsernamePasswordAuthenticationFilter>(authorizationTokenFilter)
