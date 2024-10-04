@@ -2,4 +2,26 @@ management:
   endpoints:
     web:
       base-path: /actuator
+      exposure:
+        include:
+#          - * # enable all actuator endpoints
+          - health
+          - info
+          - beans
+          - conditions
+          - configprops
+          - env
+          - logfile # does not work ?
+          - loggers
+          - metrics
+          - scheduledtasks
+  endpoint:
+    health:
+      group:
+        custom:
+          show-components: always
+          show-details: always
+          include:
+            - diskSpace
+            - ping
 

@@ -5,6 +5,7 @@
 - [Spring Web MVC](README/spring-webmvc.md)
 - [Open API 3 code generator](README/oas3-generation.md)
 - [Spring Security](https://docs.spring.io/spring-security/reference/servlet/configuration/java.html)
+
 # Run maven build
 
 ```shell
@@ -69,4 +70,57 @@ class ResourceFacade(private val resourceService: ResourceService) : ResourceApi
         return resourceService.createResource(resource)
     }
 }
+```
+
+## Actuator
+
+[Reference documentation](https://docs.spring.io/spring-boot/reference/actuator/endpoints.html#page-title)
+
+### Dependency
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+
+```xml
+<dependency>
+    <groupId>pl.project13.maven</groupId>
+    <artifactId>git-commit-id-plugin</artifactId>
+</dependency>
+```
+
+### Configuration
+
+`application.yml`
+
+```yaml
+management:
+    endpoints:
+        web:
+            base-path: /actuator
+            exposure:
+                include:
+                    #          - * # enable all actuator endpoints
+                    - health
+                    - info
+                    - beans
+                    - conditions
+                    - configprops
+                    - env
+                    - loggers
+                    - metrics
+                    - scheduledtasks
+    endpoint:
+        health:
+            group:
+                custom:
+                    show-components: always
+                    show-details: always
+                    include:
+                        - diskSpace
+                        - ping
+
 ```
