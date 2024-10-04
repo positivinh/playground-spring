@@ -6,6 +6,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
 @SpringBootTest
@@ -33,7 +34,80 @@ class ActuatorControllerTest {
         )
             .andExpect(MockMvcResultMatchers.status().isOk)
             .andExpect(MockMvcResultMatchers.jsonPath("$.status").value("UP"))
-
-
     }
+
+    @Test
+    fun infoActuatorEndpoint() {
+
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/actuator/info")
+        )
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.build.artifact").value("playground-spring-webmvc"))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.build.version").isNotEmpty)
+    }
+
+    @Test
+    fun beansActuatorEndpoint() {
+
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/actuator/beans")
+        )
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.contexts.application.beans").isNotEmpty)
+    }
+
+    @Test
+    fun conditionsActuatorEndpoint() {
+
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/actuator/conditions")
+        )
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.contexts.application.positiveMatches").isNotEmpty)
+    }
+
+    @Test
+    fun environmentActuatorEndpoint() {
+
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/actuator/env")
+        )
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andExpect(MockMvcResultMatchers.jsonPath("$").isNotEmpty)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.activeProfiles").isEmpty)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.defaultProfiles").value("default"))
+    }
+
+    @Test
+    fun loggersActuatorEndpoint() {
+
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/actuator/loggers")
+        )
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.levels").isNotEmpty)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.loggers.ROOT.effectiveLevel").value("INFO"))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.loggers.['io.positivinh.playground.spring.webmvc'].effectiveLevel").value("INFO"))
+    }
+
+    @Test
+    fun scheduledTasksActuatorEndpoint() {
+
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/actuator/scheduledtasks")
+        )
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.cron").isEmpty)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.fixedDelay").isEmpty)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.fixedRate").isEmpty)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.custom").isEmpty)
+    }
+
 }

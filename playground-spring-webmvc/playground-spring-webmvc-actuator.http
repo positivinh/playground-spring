@@ -24,4 +24,97 @@ GET {{baseUrl}}/actuator/health
     });
 %}
 
+### GET /actuator/health/custom
 
+GET {{baseUrl}}/actuator/health/custom
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.body.status === 'UP',  "unexpected response body")
+
+    });
+%}
+
+### GET /actuator/info
+
+GET {{baseUrl}}/actuator/info
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.body.build.name === 'playground-spring-webmvc',  "unexpected response body")
+
+    });
+%}
+
+
+### GET /actuator/beans
+
+GET {{baseUrl}}/actuator/beans
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.body.contexts.application.beans.hasOwnProperty("resourceApiController"),  "unexpected response body")
+    });
+%}
+
+### GET /actuator/conditions
+
+GET {{baseUrl}}/actuator/beans
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### GET /actuator/configprops
+
+GET {{baseUrl}}/actuator/configprops
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### GET /actuator/env
+
+GET {{baseUrl}}/actuator/env
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.body.defaultProfiles[0] === 'default',  "unexpected response body")
+
+    });
+%}
+
+### GET /actuator/loggers
+
+GET {{baseUrl}}/actuator/loggers
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.body.levels[1] === 'ERROR',  "unexpected response body")
+
+    });
+%}
+
+### GET /actuator/scheduledtasks
+
+GET {{baseUrl}}/actuator/scheduledtasks
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.body.hasOwnProperty("cron"),  "unexpected response body")
+        client.assert(response.body.hasOwnProperty("fixedDelay"),  "unexpected response body")
+        client.assert(response.body.hasOwnProperty("fixedRate"),  "unexpected response body")
+        client.assert(response.body.hasOwnProperty("custom"),  "unexpected response body")
+
+    });
+%}
