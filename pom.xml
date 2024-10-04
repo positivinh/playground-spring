@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.2</version>
+        <version>3.3.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>io.positivinh.playground.spring</groupId>
@@ -39,7 +39,6 @@
         <feign.version>13.2</feign.version>
         <lombok.version>1.18.34</lombok.version>
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
-        <logback.version>1.5.6</logback.version>
         <testcontainers.version>1.20.1</testcontainers.version>
         <liquibase.version>4.29.1</liquibase.version>
     </properties>
