@@ -113,6 +113,7 @@ management:
                     - loggers
                     - metrics
                     - scheduledtasks
+                    - httpexchanges
     endpoint:
         health:
             group:
