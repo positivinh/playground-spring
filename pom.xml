@@ -269,7 +269,6 @@
                             <configuration>
                                 <sourceDirs>
                                     <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
-                                    <sourceDir>target/generated-sources/src/main/kotlin</sourceDir>
                                 </sourceDirs>
                                 <annotationProcessorPaths>
                                     <annotationProcessorPath>
