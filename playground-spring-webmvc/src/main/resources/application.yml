@@ -30,6 +30,10 @@ management:
     logfile:
       enabled: true
       external-file: target/application.log
+    env:
+      show-values: always
+    configprops:
+      show-values: always
 
 logging:
   file:
