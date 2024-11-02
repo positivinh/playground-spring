@@ -16,6 +16,8 @@ management:
           - metrics
           - scheduledtasks
           - httpexchanges
+          - metrics
+          - mappings
   endpoint:
     health:
       group:
@@ -25,4 +27,10 @@ management:
           include:
             - diskSpace
             - ping
+    logfile:
+      enabled: true
+      external-file: target/application.log
 
+logging:
+  file:
+    path: target/application.log
