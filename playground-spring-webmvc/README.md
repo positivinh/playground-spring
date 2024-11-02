@@ -114,6 +114,9 @@ management:
                     - metrics
                     - scheduledtasks
                     - httpexchanges
+                    - metrics
+                    - mappings
+                    - logfile
     endpoint:
         health:
             group:

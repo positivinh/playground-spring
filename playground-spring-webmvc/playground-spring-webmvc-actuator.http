@@ -128,3 +128,36 @@ GET {{baseUrl}}/actuator/httpexchanges
         client.assert(response.body.hasOwnProperty("exchanges"),  "unexpected response body")
     });
 %}
+
+
+### GET /actuator/metrics
+
+GET {{baseUrl}}/actuator/metrics
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.body.hasOwnProperty("names"),  "unexpected response body")
+    });
+%}
+
+### GET /actuator/mappings
+
+GET {{baseUrl}}/actuator/mappings
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.body.hasOwnProperty("contexts.application.mappings"),  "unexpected response body")
+    });
+%}
+
+### GET /actuator/logfile
+
+GET {{baseUrl}}/actuator/logfile
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
