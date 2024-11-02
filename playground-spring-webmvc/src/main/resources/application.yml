@@ -18,6 +18,7 @@ management:
           - httpexchanges
           - metrics
           - mappings
+          - custom
   endpoint:
     health:
       group:
