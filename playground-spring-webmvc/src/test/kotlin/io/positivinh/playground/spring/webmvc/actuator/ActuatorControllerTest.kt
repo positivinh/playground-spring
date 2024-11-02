@@ -110,4 +110,22 @@ class ActuatorControllerTest {
             .andExpect(MockMvcResultMatchers.jsonPath("$.custom").isEmpty)
     }
 
+    @Test
+    fun httpExchangesActuatorEndpoint() {
+
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/actuator/httpexchanges")
+        )
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.exchanges").isEmpty)
+
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/actuator/httpexchanges")
+        )
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.exchanges").isNotEmpty)
+    }
+
 }
