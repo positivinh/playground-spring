@@ -1,0 +1,64 @@
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: # https://docs.spring.io/spring-boot/reference/actuator/endpoints.html
+          #          - * # enable all actuator endpoints
+          - health
+          - info
+          - beans
+          - conditions
+          - configprops
+          - env
+          - logfile # does not work ?
+          - loggers
+          - metrics
+          - scheduledtasks
+          - httpexchanges
+          - metrics
+          - mappings
+          - custom
+  endpoint:
+    health:
+      group: # https://docs.spring.io/spring-boot/reference/actuator/endpoints.html#actuator.endpoints.health.groups
+        group-name:
+          show-components: always
+          show-details: always
+          include:
+            - diskSpace
+            - ping
+            - custom
+            - livenessState
+      show-components: always #when-authorized
+      roles:
+        - ENDPOINT_ADMIN
+    logfile:
+      enabled: true
+      external-file: target/application.log # https://github.com/spring-projects/spring-boot/issues/18191
+    env:
+      show-values: always
+    configprops:
+      show-values: always
+  health: # https://docs.spring.io/spring-boot/reference/actuator/endpoints.html#actuator.endpoints.health.auto-configured-health-indicators
+    db:
+      enabled: true
+    diskspace:
+      enabled: true
+    mongo:
+      enabled: true
+    livenessstate:
+      enabled: true
+  info: # https://docs.spring.io/spring-boot/reference/actuator/endpoints.html#actuator.endpoints.info.auto-configured-info-contributors
+    git: # https://docs.spring.io/spring-boot/reference/actuator/endpoints.html#actuator.endpoints.info.git-commit-information
+      mode: simple #"full"
+      enabled: true
+    env:
+      enabled: true
+    os:
+      enabled: true
+    java:
+      enabled: true
+    process:
+      enabled: true
+
