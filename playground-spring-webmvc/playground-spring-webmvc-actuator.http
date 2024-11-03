@@ -148,7 +148,7 @@ GET {{baseUrl}}/actuator/mappings
 > {%
     client.test("Request executed successfully", function () {
         client.assert(response.status === 200, "Response status is not 200");
-        client.assert(response.body.hasOwnProperty("contexts.application.mappings"),  "unexpected response body")
+        client.assert(response.body.contexts.application.hasOwnProperty("mappings"),  "unexpected response body")
     });
 %}
 
