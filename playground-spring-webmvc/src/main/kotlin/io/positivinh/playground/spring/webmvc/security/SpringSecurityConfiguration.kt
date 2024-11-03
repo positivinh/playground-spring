@@ -26,13 +26,15 @@ class SpringSecurityConfiguration {
      * Security filter chain configuration
      *
      * See [Reference documentation](https://docs.spring.io/spring-security/reference/servlet/configuration/kotlin.html)
+     * See [Actuator security configuration](https://docs.spring.io/spring-boot/reference/actuator/endpoints.html#actuator.endpoints.security)
+     *
      */
     @Bean
     fun securityFilterChain(http: HttpSecurity, authorizationTokenFilter: AuthorizationTokenFilter): SecurityFilterChain {
         http {
             csrf { disable() }
             authorizeHttpRequests {
-                authorize("/actuator/**", permitAll)
+                authorize("/actuator/**", permitAll) // https://docs.spring.io/spring-boot/reference/actuator/endpoints.html#actuator.endpoints.security
                 authorize(anyRequest, authenticated)
             }
             addFilterBefore<UsernamePasswordAuthenticationFilter>(authorizationTokenFilter)

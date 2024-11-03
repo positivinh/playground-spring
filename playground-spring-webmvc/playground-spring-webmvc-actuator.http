@@ -23,9 +23,9 @@ GET {{baseUrl}}/actuator/health
     });
 %}
 
-### GET /actuator/health/custom
+### GET /actuator/health/group-name
 
-GET {{baseUrl}}/actuator/health/custom
+GET {{baseUrl}}/actuator/health/group-name
 
 > {%
     client.test("Request executed successfully", function () {
