@@ -1,5 +1,9 @@
 package io.positivinh.playground.spring.webmvc.actuator
 
+import org.hamcrest.CoreMatchers.hasItem
+import org.hamcrest.collection.ArrayMatching
+import org.hamcrest.collection.HasItemInArray
+import org.hamcrest.collection.IsArrayContainingInOrder
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -8,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import kotlin.test.assertContains
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -79,8 +84,8 @@ class ActuatorControllerTest {
             .andDo(MockMvcResultHandlers.print())
             .andExpect(MockMvcResultMatchers.status().isOk)
             .andExpect(MockMvcResultMatchers.jsonPath("$").isNotEmpty)
-            .andExpect(MockMvcResultMatchers.jsonPath("$.activeProfiles").isEmpty)
-            .andExpect(MockMvcResultMatchers.jsonPath("$.defaultProfiles").value("default"))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.activeProfiles", hasItem("actuator")))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.defaultProfiles", hasItem("default")))
     }
 
     @Test
