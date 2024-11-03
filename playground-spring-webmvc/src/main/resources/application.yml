@@ -3,8 +3,8 @@ management:
     web:
       base-path: /actuator
       exposure:
-        include:
-#          - * # enable all actuator endpoints
+        include: # https://docs.spring.io/spring-boot/reference/actuator/endpoints.html
+          #          - * # enable all actuator endpoints
           - health
           - info
           - beans
@@ -22,12 +22,17 @@ management:
   endpoint:
     health:
       group:
-        custom:
+        group-name:
           show-components: always
           show-details: always
           include:
             - diskSpace
             - ping
+            - custom
+            - livenessState
+      show-components: always #when-authorized
+      roles:
+        - ENDPOINT_ADMIN
     logfile:
       enabled: true
       external-file: target/application.log
@@ -35,7 +40,15 @@ management:
       show-values: always
     configprops:
       show-values: always
-
+  health:
+    db:
+      enabled: true
+    diskspace:
+      enabled: true
+    mongo:
+      enabled: true
+    livenessstate:
+      enabled: true
 logging:
   file:
     path: target/application.log

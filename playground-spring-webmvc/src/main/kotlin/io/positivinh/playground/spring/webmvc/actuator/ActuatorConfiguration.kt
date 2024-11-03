@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class ActuatorConfiguration {
 
+    /**
+     * [HttpExchangeRepository][org.springframework.boot.actuate.web.exchanges.HttpExchangeRepository] bean for actuator endpoint _/httpexchanges_
+     */
     @Bean
     fun inMemoryHttpExchangeRepository(): InMemoryHttpExchangeRepository {
 
