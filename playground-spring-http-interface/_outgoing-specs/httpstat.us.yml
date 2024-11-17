@@ -1,0 +1,31 @@
+openapi: 3.0.1
+info:
+  title: httpstat.us api
+  version: v0
+servers:
+  - url: https://httpstat.us
+paths:
+  "/200":
+    get:
+      tags:
+        - http-status
+      operationId: get200
+      responses:
+        200:
+          description: default response
+          content:
+            text/plain:
+              schema:
+                type: string
+  "/400":
+    get:
+      tags:
+        - http-status
+      operationId: get400
+      responses:
+        200:
+          description: default response
+          content:
+            text/plain:
+              schema:
+                type: string
