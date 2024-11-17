@@ -20,6 +20,7 @@
         <module>playground-spring-webmvc</module>
         <!--        <module>playground-spring-mybatis</module>-->
         <module>playground-spring-data-jpa</module>
+        <module>playground-spring-open-feign</module>
     </modules>
 
     <properties>
@@ -29,7 +30,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <kotlin.version>2.0.0</kotlin.version>
         <spring-boot.version>3.3.5</spring-boot.version>
-        <spring-cloud.version>2023.0.0</spring-cloud.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <crabshue-commons.version>1.1.0</crabshue-commons.version>
         <jackson-bom.version>2.17.2</jackson-bom.version>
