@@ -6,6 +6,10 @@
 
 ### `pom.xml`
 
+[OpenApi generator](https://openapi-generator.tech/docs/generators/spring/)
+
+> This generator is still experimental
+
 ```xml
 
 <plugin>
