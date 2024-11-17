@@ -21,7 +21,7 @@ class HttpStatusClientApiIT {
     @Test
     fun callApi200() {
 
-        val res = httpStatusApiClient.get200()
+        val res = httpStatusApiClient.get200("test header", 0, "test body")
 
         Assertions.assertEquals("200 OK", res)
     }

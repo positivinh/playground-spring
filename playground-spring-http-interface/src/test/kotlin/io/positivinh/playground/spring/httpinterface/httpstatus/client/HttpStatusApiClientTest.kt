@@ -2,6 +2,7 @@ package io.positivinh.playground.spring.httpinterface.httpstatus.client
 
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock
+import com.github.tomakehurst.wiremock.matching.ContainsPattern
 import com.maciejwalkowiak.wiremock.spring.ConfigureWireMock
 import com.maciejwalkowiak.wiremock.spring.EnableWireMock
 import com.maciejwalkowiak.wiremock.spring.InjectWireMock
@@ -28,13 +29,16 @@ class HttpStatusApiClientTest {
     fun callApi200() {
 
         wiremock.stubFor(
-            WireMock.get("/200")
+            WireMock.get(WireMock.urlPathMatching("/200(\\?sleep)?"))
                 .willReturn(WireMock.ok("200 OK"))
         )
 
-        val res = httpStatusApiClient.get200()
+        val res = httpStatusApiClient.get200("test header", 0, "test body")
 
         Assertions.assertEquals("200 OK", res)
+
+        val res2 = httpStatusApiClient.get200(null, null, null)
+        Assertions.assertEquals("200 OK", res2)
     }
 
     @Test
