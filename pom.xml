@@ -21,6 +21,7 @@
         <!--        <module>playground-spring-mybatis</module>-->
         <module>playground-spring-data-jpa</module>
         <module>playground-spring-open-feign</module>
+        <module>playground-spring-http-interface</module>
     </modules>
 
     <properties>
