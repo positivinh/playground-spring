@@ -13,7 +13,6 @@
 
     <properties>
         <openapi.codegen.version>6.6.0</openapi.codegen.version>
-        <springdoc-openapi.version>2.6.0</springdoc-openapi.version>
         <swagger-v3.version>2.2.22</swagger-v3.version>
     </properties>
 
@@ -43,19 +42,10 @@
             <version>${swagger-v3.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
-            <version>${springdoc-openapi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>${springdoc-openapi.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
         </dependency>
+        <!-- wiremock -->
         <dependency>
             <groupId>com.maciejwalkowiak.spring</groupId>
             <artifactId>wiremock-spring-boot</artifactId>
