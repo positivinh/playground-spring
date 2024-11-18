@@ -87,19 +87,14 @@ public interface HttpStatusApi {
 @Configuration
 class HttpStatusApiClientConfiguration(val httpStatusApiClientConfigurationProperties: HttpStatusApiClientConfigurationProperties) {
 
-
     @Bean
-    fun httpStatusApiClient(): HttpStatusApi {
+    fun httpServiceProxyFactory(): HttpServiceProxyFactory {
 
-        val webClient = WebClient.builder()
-            .baseUrl(httpStatusApiClientConfigurationProperties.url)
+        val restClient = RestClient.create(httpStatusApiClientConfigurationProperties.url)
+
+        return HttpServiceProxyFactory
+            .builderFor(RestClientAdapter.create(restClient))
             .build()
-
-        val httpServiceProxyFactory = HttpServiceProxyFactory
-            .builderFor(WebClientAdapter.create(webClient))
-            .build()
-
-        return httpServiceProxyFactory.createClient(HttpStatusApi::class.java)
     }
 }
 
