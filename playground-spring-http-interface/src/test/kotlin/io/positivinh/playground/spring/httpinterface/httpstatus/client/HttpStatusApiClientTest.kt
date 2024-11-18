@@ -2,7 +2,6 @@ package io.positivinh.playground.spring.httpinterface.httpstatus.client
 
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock
-import com.github.tomakehurst.wiremock.matching.ContainsPattern
 import com.maciejwalkowiak.wiremock.spring.ConfigureWireMock
 import com.maciejwalkowiak.wiremock.spring.EnableWireMock
 import com.maciejwalkowiak.wiremock.spring.InjectWireMock
@@ -10,7 +9,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.web.reactive.function.client.WebClientResponseException
+import org.springframework.web.client.HttpClientErrorException
 
 
 @SpringBootTest
@@ -49,6 +48,6 @@ class HttpStatusApiClientTest {
                 .willReturn(WireMock.badRequest())
         )
 
-        Assertions.assertThrows(WebClientResponseException.BadRequest::class.java) { httpStatusApiClient.get400() }
+        Assertions.assertThrows(HttpClientErrorException.BadRequest::class.java) { httpStatusApiClient.get400() }
     }
 }

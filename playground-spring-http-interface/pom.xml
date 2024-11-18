@@ -21,10 +21,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
         <!-- open api generation -->
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
@@ -103,6 +99,7 @@
                             <ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>
                             <templateDirectory>src/main/resources/mustache</templateDirectory>
                             <configOptions>
+                                <interfaceOnly>true</interfaceOnly> <!-- generate open api configuration or not -->
                                 <generateApiTests>false</generateApiTests>
                                 <generateModelTests>false</generateModelTests>
                                 <useTags>true</useTags>

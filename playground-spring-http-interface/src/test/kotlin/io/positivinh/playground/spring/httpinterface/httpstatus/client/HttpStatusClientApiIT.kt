@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.TestPropertySource
-import org.springframework.web.reactive.function.client.WebClientResponseException
+import org.springframework.web.client.HttpClientErrorException
 
 @SpringBootTest
 @TestPropertySource(
@@ -29,6 +29,6 @@ class HttpStatusClientApiIT {
     @Test
     fun callApi400() {
 
-       Assertions.assertThrows(WebClientResponseException.BadRequest::class.java) { httpStatusApiClient.get400() }
+        Assertions.assertThrows(HttpClientErrorException.BadRequest::class.java) { httpStatusApiClient.get400() }
     }
 }
