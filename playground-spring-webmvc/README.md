@@ -86,10 +86,11 @@ class ResourceFacade(private val resourceService: ResourceService) : ResourceApi
 ```
 
 ```xml
-<dependency>
-    <groupId>pl.project13.maven</groupId>
-    <artifactId>git-commit-id-plugin</artifactId>
-</dependency>
+
+<plugin>
+    <groupId>io.github.git-commit-id</groupId>
+    <artifactId>git-commit-id-maven-plugin</artifactId>
+</plugin>
 ```
 
 ### Configuration
