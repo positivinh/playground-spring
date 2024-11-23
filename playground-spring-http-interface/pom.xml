@@ -11,11 +11,6 @@
 
     <artifactId>playground-spring-http-interface</artifactId>
 
-    <properties>
-        <openapi.codegen.version>7.9.0</openapi.codegen.version>
-        <swagger-v3.version>2.2.22</swagger-v3.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

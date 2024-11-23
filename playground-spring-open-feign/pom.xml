@@ -11,11 +11,6 @@
 
     <artifactId>playground-spring-open-feign</artifactId>
 
-    <properties>
-        <openapi.codegen.version>6.6.0</openapi.codegen.version>
-        <swagger-v3.version>2.2.22</swagger-v3.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
