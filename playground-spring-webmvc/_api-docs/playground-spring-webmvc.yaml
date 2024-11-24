@@ -79,9 +79,7 @@ components:
           type: integer
           format: int32
         sort:
-          type: array
-          items:
-            type: string
+          $ref: '#/components/schemas/Sort'
 
 
     Page:

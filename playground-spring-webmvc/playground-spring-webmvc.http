@@ -1,7 +1,7 @@
 
 ### GET /resources - no search term
 
-GET {{baseUrl}}/resources
+GET {{baseUrl}}/resources?sort=name,DESC&page=0&size=20
 Authorization: vinh
 
 > {%
