@@ -13,7 +13,6 @@
     <artifactId>playground-spring-webmvc</artifactId>
 
     <properties>
-        <openapi.codegen.version>6.6.0</openapi.codegen.version>
         <springdoc-openapi.version>2.7.0</springdoc-openapi.version>
     </properties>
 
