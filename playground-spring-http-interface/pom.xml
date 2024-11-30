@@ -91,16 +91,12 @@
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
-                            <ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>
                             <templateDirectory>src/main/resources/mustache</templateDirectory>
                             <configOptions>
                                 <interfaceOnly>true</interfaceOnly> <!-- generate open api configuration or not -->
                                 <generateApiTests>false</generateApiTests>
                                 <generateModelTests>false</generateModelTests>
                                 <useTags>true</useTags>
-                                <performBeanValidation>true</performBeanValidation>
-                                <useBeanValidation>true</useBeanValidation>
-                                <useJakartaEe>true</useJakartaEe>
                                 <useSpringBoot3>true</useSpringBoot3>
                                 <useSpringController>true</useSpringController>
                                 <delegatePattern>false</delegatePattern>
