@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.0</version>
+        <version>3.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>io.positivinh.playground.spring</groupId>
@@ -30,8 +30,8 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <kotlin.version>2.1.0</kotlin.version>
-        <spring-boot.version>3.4.0</spring-boot.version>
-        <spring-cloud.version>2024.0.0-RC1</spring-cloud.version>
+        <spring-boot.version>3.4.1</spring-boot.version>
+        <spring-cloud.version>2024.0.0</spring-cloud.version>
         <mapstruct.version>1.6.3</mapstruct.version>
         <crabshue-commons.version>1.1.0</crabshue-commons.version>
         <jackson-bom.version>2.18.2</jackson-bom.version>
@@ -43,8 +43,9 @@
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
         <testcontainers.version>1.20.4</testcontainers.version>
         <liquibase.version>4.30.0</liquibase.version>
-        <swagger-v3.version>2.2.26</swagger-v3.version>
+        <swagger-v3.version>2.2.27</swagger-v3.version>
         <openapi.codegen.version>7.9.0</openapi.codegen.version>
+        <logback.version>1.5.14</logback.version>
     </properties>
 
     <dependencyManagement>
