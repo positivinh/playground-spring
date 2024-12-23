@@ -22,6 +22,7 @@
         <module>playground-spring-data-jpa</module>
         <module>playground-spring-open-feign</module>
         <module>playground-spring-http-interface</module>
+        <module>playground-spring-autoconfigure</module>
     </modules>
 
     <properties>
@@ -135,6 +136,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -148,7 +150,6 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
