@@ -74,4 +74,17 @@ class PlaygroundSpringAutoConfigurationTest {
         }
 
     }
+
+
+    @Test
+    fun doNotLoadAutoConfigurationIfDisabled() {
+
+        contextRunner
+            .withPropertyValues("playground.autoconfiguration.enabled=false")
+            .run { context: AssertableApplicationContext ->
+
+                assertThat(context).doesNotHaveBean(PlaygroundBean::class.java)
+            }
+    }
+
 }
