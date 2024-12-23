@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean
  */
 @AutoConfiguration
 @ConfigurationPropertiesScan
-class PlaygroundSpringAutoConfigure {
+class PlaygroundSpringAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean

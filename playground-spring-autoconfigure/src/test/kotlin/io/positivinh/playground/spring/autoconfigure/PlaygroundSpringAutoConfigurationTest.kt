@@ -11,10 +11,10 @@ import org.springframework.boot.test.context.runner.ApplicationContextRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
-class PlaygroundSpringAutoConfigureTest {
+class PlaygroundSpringAutoConfigurationTest {
 
     private val contextRunner = ApplicationContextRunner()
-        .withConfiguration(AutoConfigurations.of(PlaygroundSpringAutoConfigure::class.java))
+        .withConfiguration(AutoConfigurations.of(PlaygroundSpringAutoConfiguration::class.java))
         .withInitializer(ConfigDataApplicationContextInitializer())
 
 
