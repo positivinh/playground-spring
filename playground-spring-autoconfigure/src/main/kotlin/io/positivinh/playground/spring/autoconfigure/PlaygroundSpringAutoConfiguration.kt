@@ -4,6 +4,7 @@ import io.positivinh.playground.spring.autoconfigure.domain.PlaygroundBean
 import io.positivinh.playground.spring.autoconfigure.properties.PlaygroundAutoConfigurationProperties
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.context.annotation.Bean
 
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Bean
  */
 @AutoConfiguration
 @ConfigurationPropertiesScan
+@ConditionalOnProperty(prefix = "playground.autoconfiguration", value = ["enabled"], havingValue = "true", matchIfMissing = true)
 class PlaygroundSpringAutoConfiguration {
 
     @Bean
