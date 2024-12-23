@@ -66,10 +66,10 @@ class PlaygroundSpringAutoConfigureTest {
     }
 
     @Configuration(proxyBeanMethods = false)
-    internal open class UserConfiguration {
+    internal class UserConfiguration {
 
         @Bean
-        open fun playgroundBean(playgroundBeanConfigurationProperties: PlaygroundAutoConfigurationProperties): PlaygroundBean {
+        fun playgroundBean(playgroundBeanConfigurationProperties: PlaygroundAutoConfigurationProperties): PlaygroundBean {
             return PlaygroundBean("mine", playgroundBeanConfigurationProperties.property)
         }
 

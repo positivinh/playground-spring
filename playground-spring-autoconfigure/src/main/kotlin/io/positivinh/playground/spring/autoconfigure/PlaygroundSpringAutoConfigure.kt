@@ -12,11 +12,11 @@ import org.springframework.context.annotation.Bean
  */
 @AutoConfiguration
 @EnableConfigurationProperties(PlaygroundAutoConfigurationProperties::class)
-open class PlaygroundSpringAutoConfigure {
+class PlaygroundSpringAutoConfigure {
 
     @Bean
     @ConditionalOnMissingBean
-    open fun playgroundBean(playgroundAutoConfigurationProperties: PlaygroundAutoConfigurationProperties): PlaygroundBean {
+    fun playgroundBean(playgroundAutoConfigurationProperties: PlaygroundAutoConfigurationProperties): PlaygroundBean {
 
         return PlaygroundBean("autoconfigured", property = playgroundAutoConfigurationProperties.property)
     }

@@ -23,6 +23,7 @@
         <module>playground-spring-open-feign</module>
         <module>playground-spring-http-interface</module>
         <module>playground-spring-autoconfigure</module>
+        <module>playground-spring-multi-module</module>
     </modules>
 
     <properties>

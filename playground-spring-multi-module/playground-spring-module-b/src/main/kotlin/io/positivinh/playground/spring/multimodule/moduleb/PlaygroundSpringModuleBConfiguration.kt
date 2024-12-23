@@ -1,0 +1,11 @@
+package io.positivinh.playground.spring.multimodule.moduleb
+
+import org.springframework.boot.SpringBootConfiguration
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration
+import org.springframework.context.annotation.ComponentScan
+
+@SpringBootConfiguration
+@ComponentScan
+@EnableAutoConfiguration
+class PlaygroundSpringModuleBConfiguration
+
