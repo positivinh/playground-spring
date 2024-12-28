@@ -8,12 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.ApplicationContext
 
-@SpringBootTest(
-    properties = [
-        "playground.bean.property=from receiving project properties"
-    ]
-)
-class PlaygroundSpringModuleAApplicationTest {
+@SpringBootTest
+class PlaygroundSpringModuleAApplicationDefaultPropertiesTest {
 
     @Autowired
     private lateinit var applicationContext: ApplicationContext
@@ -36,6 +32,6 @@ class PlaygroundSpringModuleAApplicationTest {
 
         Assertions.assertNotNull(autoconfiguredBean)
         Assertions.assertEquals("autoconfigured", autoconfiguredBean.name)
-        Assertions.assertEquals("from receiving project properties", autoconfiguredBean.property)
+        Assertions.assertEquals("from autoconfiguration properties", autoconfiguredBean.property)
     }
 }
