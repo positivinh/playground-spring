@@ -1,0 +1,29 @@
+spring:
+  kafka:
+
+    bootstrap-servers: localhost:9092
+    admin:
+      auto-create: false
+    consumer:
+      group-id: "playground-kafka"
+      value-deserializer: "org.springframework.kafka.support.serializer.JsonDeserializer"
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.value.default.type: io.positivinh.playground.spring.kafka.messages.KafkaMessage
+    producer:
+      value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
+#      properties:
+#        "[spring.json.add.type.headers]": false
+
+#      properties:
+#        "[spring.json.value.default.type]": "com.example.Invoice"
+#        "[spring.json.trusted.packages]": "com.example.main,com.example.another"
+
+  docker:
+    compose:
+      file: classpath:/compose.yaml
+      skip:
+        in-tests: false
+      stop:
+        command: stop
+#        command: down

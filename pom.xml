@@ -24,6 +24,7 @@
         <module>playground-spring-http-interface</module>
         <module>playground-spring-autoconfigure</module>
         <module>playground-spring-multi-module</module>
+        <module>playground-spring-kafka</module>
     </modules>
 
     <properties>
