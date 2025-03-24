@@ -29,7 +29,7 @@ class PlaygroundSpringAutoConfigurationTest {
                 assertThat(context).getBean("playgroundBean", PlaygroundBean::class.java)
                     .isSameAs(context.getBean(PlaygroundBean::class.java))
                 assertThat(bean.name).isEqualTo("autoconfigured")
-                assertThat(bean.property).isEqualTo("from properties")
+                assertThat(bean.property).isEqualTo("from autoconfiguration properties")
             }
     }
 
@@ -61,7 +61,7 @@ class PlaygroundSpringAutoConfigurationTest {
                 assertThat(context).getBean("playgroundBean", PlaygroundBean::class.java)
                     .isSameAs(context.getBean(PlaygroundBean::class.java))
                 assertThat(bean.name).isEqualTo("mine")
-                assertThat(bean.property).isEqualTo("from properties")
+                assertThat(bean.property).isEqualTo("from autoconfiguration properties")
             }
     }
 

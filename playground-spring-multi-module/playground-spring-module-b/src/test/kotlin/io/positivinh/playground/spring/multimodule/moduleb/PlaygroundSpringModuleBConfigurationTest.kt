@@ -21,6 +21,6 @@ class PlaygroundSpringModuleBConfigurationTest {
 
         Assertions.assertNotNull(bean)
         Assertions.assertEquals("autoconfigured", bean.name)
-        Assertions.assertEquals("from properties", bean.property)
+        Assertions.assertEquals("from autoconfiguration properties", bean.property)
     }
 }

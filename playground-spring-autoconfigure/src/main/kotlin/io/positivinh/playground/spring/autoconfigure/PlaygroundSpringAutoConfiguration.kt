@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.PropertySource
 
 /**
  * See [Reference documentation](https://docs.spring.io/spring-boot/reference/features/developing-auto-configuration.html#features.developing-auto-configuration.custom-starter)
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.Bean
 @AutoConfiguration
 @ConfigurationPropertiesScan
 @ConditionalOnProperty(prefix = "playground.autoconfiguration", value = ["enabled"], havingValue = "true", matchIfMissing = true)
+@PropertySource("classpath:/playground-autoconfigure.properties")
 class PlaygroundSpringAutoConfiguration {
 
     @Bean
