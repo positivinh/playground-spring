@@ -25,6 +25,7 @@
         <module>playground-spring-autoconfigure</module>
         <module>playground-spring-multi-module</module>
         <module>playground-poi-excel</module>
+        <module>playground-yaml</module>
     </modules>
 
     <properties>
