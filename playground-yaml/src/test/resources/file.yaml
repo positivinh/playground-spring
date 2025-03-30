@@ -1,0 +1,10 @@
+file-type: CRF
+mapping-rules:
+  - name: Concept A
+    class-name: io.positivinh.playground.yaml.mappings.ConceptA
+    properties:
+      - name: Property A
+        sheet: Sheet1
+        row: 1
+        column: C
+        type: string
