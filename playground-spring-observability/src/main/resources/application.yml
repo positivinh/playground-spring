@@ -1,0 +1,5 @@
+management:
+  observations:
+    key-values:
+      region: "us-east-1"
+      stack: "prod"

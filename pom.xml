@@ -27,6 +27,7 @@
         <module>playground-poi-excel</module>
         <module>playground-yaml</module>
         <module>playground-spring-kafka</module>
+        <module>playground-spring-observability</module>
     </modules>
 
     <properties>
