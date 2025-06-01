@@ -1,5 +1,56 @@
 management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  tracing:
+    sampling:
+      probability: 1.0
   observations:
+    annotations:
+      enabled: true
     key-values:
       region: "us-east-1"
       stack: "prod"
+  opentelemetry: # https://docs.spring.io/spring-boot/reference/actuator/observability.html#actuator.observability.opentelemetry
+    resource-attributes:
+      test: test
+  otlp:
+    logging:
+      endpoint: "https://otlp.example.com:4318/v1/logs"
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+
+server:
+  port: 8014
+
+spring:
+  docker:
+    compose:
+      enabled: true
+      skip:
+        in-tests: false
+      file: compose.yaml
+  application:
+    name: playground-spring-observability
+
+otel:
+  propagators:
+    - tracecontext
+  #    - b3
+  resource:
+    attributes:
+      deployment.environment: dev
+      service:
+        name: cart
+        namespace: shop
+  instrumentation:
+    micrometer:
+      enabled: true
